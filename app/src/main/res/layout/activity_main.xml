@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,7 +21,8 @@
         android:hint="@string/hint_email"
         android:inputType="textEmailAddress"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/new_email"
@@ -29,7 +31,8 @@
         android:hint="@string/hint_new_email"
         android:inputType="textEmailAddress"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/password"
@@ -37,11 +40,11 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
         android:hint="Password"
-        android:imeActionId="@+id/login"
         android:imeOptions="actionUnspecified"
         android:inputType="textPassword"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/newPassword"
@@ -49,11 +52,11 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
         android:hint="@string/new_pass"
-        android:imeActionId="@+id/login"
         android:imeOptions="actionUnspecified"
         android:inputType="textPassword"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/changeEmail"
