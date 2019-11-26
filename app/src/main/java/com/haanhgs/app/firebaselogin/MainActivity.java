@@ -65,62 +65,8 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 
-//    private void hideViews(){
-//        oldEmail.setVisibility(View.GONE);
-//        newEmail.setVisibility(View.GONE);
-//        password.setVisibility(View.GONE);
-//        newPassword.setVisibility(View.GONE);
-//        changeEmail.setVisibility(View.GONE);
-//        changePass.setVisibility(View.GONE);
-//        send.setVisibility(View.GONE);
-//        remove.setVisibility(View.GONE);
-//
-//        if (progressBar != null) {
-//            progressBar.setVisibility(View.GONE);
-//        }
-//    }
-//
-//    private void changeEmailButton(){
-//        changeEmailButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                oldEmail.setVisibility(View.GONE);
-//                newEmail.setVisibility(View.VISIBLE);
-//                password.setVisibility(View.GONE);
-//                newPassword.setVisibility(View.GONE);
-//                changeEmail.setVisibility(View.VISIBLE);
-//                changePass.setVisibility(View.GONE);
-//                send.setVisibility(View.GONE);
-//                remove.setVisibility(View.GONE);
-//            }
-//        });
-//    }
-//
-//    private void changePasswordButton(){
-//
-//        //change button visible for password changing
-//        changePasswordButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                oldEmail.setVisibility(View.GONE);
-//                newEmail.setVisibility(View.GONE);
-//                password.setVisibility(View.GONE);
-//                newPassword.setVisibility(View.VISIBLE);
-//                changeEmail.setVisibility(View.GONE);
-//                changePass.setVisibility(View.VISIBLE);
-//                send.setVisibility(View.GONE);
-//                remove.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        changePass.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
 
-//            }
-//        });
-//    }
-//
+
 //    private void resetEmailButton(){
 //        //reset email button
 //        sendingPassResetButton.setOnClickListener(new View.OnClickListener() {
@@ -140,27 +86,7 @@ public class MainActivity extends AppCompatActivity {
 //        send.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                progressBar.setVisibility(View.VISIBLE);
-//                String oldEmailText = oldEmail.getText().toString().trim();
-//
-//                if (!oldEmailText.equals("")) {
-//                    firebaseAuth.sendPasswordResetEmail(oldEmailText)
-//                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if (task.isSuccessful()) {
-//                                        Toast.makeText(MainActivity.this, "Reset password email is sent!", Toast.LENGTH_SHORT).show();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    } else {
-//                                        Toast.makeText(MainActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    }
-//                                }
-//                            });
-//                } else {
-//                    oldEmail.setError("Enter email");
-//                    progressBar.setVisibility(View.GONE);
-//                }
+
 //            }
 //        });
 //    }

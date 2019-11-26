@@ -119,7 +119,7 @@ public class FragmentMain extends BaseFragment{
     }
 
     private void openChangePassword() {
-        Log.d("Debug.FragmentMain", "on mail change");
+        Log.d("Debug.FragmentMain", "on pass change");
         if (getFragmentManager() != null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             Fragment fragment = getFragmentManager().findFragmentByTag("change_pass");
@@ -137,6 +137,26 @@ public class FragmentMain extends BaseFragment{
         }
     }
 
+    private void openResetPassword() {
+        Log.d("Debug.FragmentMain", "on pass reset");
+        if (getFragmentManager() != null) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment fragment = getFragmentManager().findFragmentByTag("reset_pass");
+            if (fragment == null) {
+                FragmentResetPass passFragment = new FragmentResetPass();
+                passFragment.setUser(user);
+                passFragment.setFirebaseAuth(firebaseAuth);
+                ft.add(R.id.framelayout_main, passFragment, "reset_pass");
+                ft.addToBackStack("reset_pass");
+                ft.hide(this);
+                ft.commit();
+            } else {
+                ft.attach(fragment);
+            }
+        }
+    }
+
+
 
 
     @OnClick({R.id.change_email_button, R.id.change_password_button,
@@ -150,6 +170,7 @@ public class FragmentMain extends BaseFragment{
                 openChangePassword();
                 break;
             case R.id.sending_pass_reset_button:
+                openResetPassword();
                 break;
             case R.id.remove_user_button:
                 break;
