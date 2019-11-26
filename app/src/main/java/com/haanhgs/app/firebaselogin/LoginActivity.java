@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkUserSignInAlready();
-        setContentView(R.layout.activity_login1);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
     }
 
