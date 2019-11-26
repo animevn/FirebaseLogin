@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,7 +53,6 @@ public class FragmentMain extends BaseFragment{
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
         activity = getActivity();
     }
 
