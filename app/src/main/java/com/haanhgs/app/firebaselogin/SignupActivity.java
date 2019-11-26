@@ -1,6 +1,5 @@
 package com.haanhgs.app.firebaselogin;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -38,6 +37,7 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
     private void registerWithFirebase(String userEmail, String userPassword){
+        //noinspection Convert2Lambda
         firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>(){
                     @Override

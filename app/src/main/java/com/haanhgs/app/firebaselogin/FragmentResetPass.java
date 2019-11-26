@@ -56,6 +56,7 @@ public class FragmentResetPass extends BaseFragment {
         String currentEmail = email.getText().toString().trim();
 
         if (!currentEmail.equals("")) {
+            //noinspection Convert2Lambda
             firebaseAuth.sendPasswordResetEmail(currentEmail)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

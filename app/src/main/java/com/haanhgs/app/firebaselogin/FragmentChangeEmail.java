@@ -77,6 +77,7 @@ public class FragmentChangeEmail extends BaseFragment {
     private void reEnableCredential(Task<Void> task, String string){
         if (task.isSuccessful()){
             Log.d("D.FragmentChangeEmail", "authenticate ok");
+            //noinspection Convert2Lambda,Anonymous2MethodRef
             user.updateEmail(string).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -98,6 +99,7 @@ public class FragmentChangeEmail extends BaseFragment {
         String password = this.password.getText().toString();
         if (user != null && user.getEmail() != null && !newEmail.equals("") && !password.equals("")) {
             AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), password);
+            //noinspection Convert2Lambda
             user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

@@ -18,12 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -50,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1979;
 
     private void logUserToFirebase(String mail, String pass) {
+        //noinspection Convert2Lambda
         firebaseAuth.signInWithEmailAndPassword(mail, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -151,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("D.LoginActivity", "firebaseAuthWithGoogle:" + acct.getId());
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        //noinspection Convert2Lambda
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

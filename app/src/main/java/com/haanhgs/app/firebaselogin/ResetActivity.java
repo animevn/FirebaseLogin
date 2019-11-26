@@ -30,6 +30,7 @@ public class ResetActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
     private void requestResetPass(String userEmail){
+        //noinspection Convert2Lambda
         firebaseAuth.sendPasswordResetEmail(userEmail)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
