@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.progressbar)
     ProgressBar progressBar;
 
+    public static LoginActivity loginActivity;
     private FirebaseAuth firebaseAuth;
 
     private void logUserToFirebase(String mail, String pass){
@@ -84,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
                 break;
             case R.id.btn_signup:
                 startActivity(new Intent(this, SignupActivity.class));
-                finish();
                 break;
         }
     }
@@ -100,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loginActivity = this;
         checkUserSignInAlready();
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
