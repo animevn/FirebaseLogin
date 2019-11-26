@@ -116,32 +116,7 @@ public class MainActivity extends AppCompatActivity {
 //        changePass.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                progressBar.setVisibility(View.VISIBLE);
-//                String newPasswordText = newPassword.getText().toString().trim();
-//
-//                if (user != null && !newPasswordText.equals("")) {
-//                    user.updatePassword(newPasswordText)
-//                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if (task.isSuccessful()) {
-//                                        Toast.makeText(MainActivity.this,
-//                                                "Password is updated, sign in with new password!",
-//                                                Toast.LENGTH_SHORT).show();
-//                                        firebaseAuth.signOut();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    } else {
-//                                        Toast.makeText(MainActivity.this,
-//                                                "Failed to update password!",
-//                                                Toast.LENGTH_SHORT).show();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    }
-//                                }
-//                            });
-//                } else if (newPasswordText.equals("")) {
-//                    newPassword.setError("Enter password");
-//                    progressBar.setVisibility(View.GONE);
-//                }
+
 //            }
 //        });
 //    }
@@ -222,14 +197,5 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //    }
 //
-//    private void signout(){
-//        //simple signing out
-//        signOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                firebaseAuth.signOut();
-//                Log.d("Debug.MainActivity", "logout");
-//            }
-//        });
-//    }
+
 }

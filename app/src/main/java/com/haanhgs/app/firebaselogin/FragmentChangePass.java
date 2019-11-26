@@ -22,20 +22,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FragmentChangeEmail extends BaseFragment {
-
-    @BindView(R.id.old_email)
-    EditText oldEmail;
+public class FragmentChangePass extends BaseFragment {
     @BindView(R.id.password)
     EditText password;
-    @BindView(R.id.new_email)
-    EditText newEmail;
+    @BindView(R.id.new_password)
+    EditText newPassword;
     @BindView(R.id.progressbar)
     ProgressBar progressBar;
-    @BindView(R.id.changeEmail)
-    Button changeEmail;
-    @BindView(R.id.cardview_email)
-    CardView cardviewEmail;
+    @BindView(R.id.changePass)
+    Button changePass;
+    @BindView(R.id.cardview_password)
+    CardView cardviewPassword;
+
     private Context context;
     private FirebaseUser user;
     private FirebaseAuth firebaseAuth;
@@ -59,56 +57,64 @@ public class FragmentChangeEmail extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_change_email, container, false);
+        View view = inflater.inflate(R.layout.fragment_change_password, container, false);
         ButterKnife.bind(this, view);
-        oldEmail.setText(user.getEmail());
         return view;
     }
 
-    private void changeEmail(Task<Void> task){
+    private void changePass(Task<Void> task){
         if (task.isSuccessful()) {
+            Log.d("D.FragmentChangePass", "change pass ok");
             firebaseAuth.signOut();
             progressBar.setVisibility(View.GONE);
-            Log.d("D.FragmentChangeEmail", "change email ok");
         } else {
-            Log.d("D.FragmentChangeEmail", "change email fail");
+            Log.d("D.FragmentChangePass", "change pass failed");
             progressBar.setVisibility(View.GONE);
         }
+
     }
 
     private void reEnableCredential(Task<Void> task, String string){
         if (task.isSuccessful()){
-            Log.d("D.FragmentChangeEmail", "authenticate ok");
+            Log.d("D.FragmentChangePass", "authenticate ok");
             user.updateEmail(string).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    changeEmail(task);
+                    user.updatePassword(string)
+                            .addOnCompleteListener(new OnCompleteListener<Void>(){
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            changePass(task);
+                        }
+                    });
                 }
             });
         }else {
-            Log.d("D.FragmentChangeEmail", "authenticate failed");
+            Log.d("D.FragmentChangePass", "authenticate failed");
             progressBar.setVisibility(View.GONE);
         }
     }
 
-    @OnClick(R.id.changeEmail)
-    public void onViewClicked() {
+    private void changePassword(){
         progressBar.setVisibility(View.VISIBLE);
-
-        //chaning email
-        String newEmail = this.newEmail.getText().toString().trim();
-        String password = this.password.getText().toString();
-        if (user != null && user.getEmail() != null && !newEmail.equals("") && !password.equals("")) {
-            AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), password);
+        String oldPass = password.getText().toString().trim();
+        String newPass = newPassword.getText().toString().trim();
+        if (user != null && !newPass.equals("") && user.getEmail() != null) {
+            AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), oldPass);
             user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    reEnableCredential(task, newEmail);
+                    reEnableCredential(task, newPass);
                 }
             });
-        } else if (newEmail.equals("")) {
-            this.newEmail.setError("Enter email");
+        } else if (newPass.equals("")) {
+            newPassword.setError("Enter password");
             progressBar.setVisibility(View.GONE);
         }
+    }
+
+    @OnClick(R.id.changePass)
+    public void onViewClicked() {
+        changePassword();
     }
 }

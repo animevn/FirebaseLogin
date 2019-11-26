@@ -12,7 +12,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
@@ -25,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.login_button) Button loginButton;
     @BindView(R.id.reset_button) Button resetButton;
     @BindView(R.id.btn_signup) Button btnSignup;
-    @BindView(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.progressbar) ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;
 

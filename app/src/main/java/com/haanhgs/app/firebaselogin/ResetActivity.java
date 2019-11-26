@@ -24,7 +24,7 @@ public class ResetActivity extends AppCompatActivity {
     Button btnResetPassword;
     @BindView(R.id.btn_back)
     Button btnBack;
-    @BindView(R.id.progressBar)
+    @BindView(R.id.progressbar)
     ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;

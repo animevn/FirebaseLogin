@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FederatedAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -86,6 +87,18 @@ public class FragmentMain extends BaseFragment{
         };
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        ButterKnife.bind(this, view);
+        initFirebase();
+        if (user.getEmail() != null) textviewUserEmail.setText(user.getEmail());
+        return view;
+    }
+
     private void openChangeEmail() {
         Log.d("Debug.FragmentMain", "on mail change");
         if (getFragmentManager() != null) {
@@ -93,6 +106,8 @@ public class FragmentMain extends BaseFragment{
             Fragment fragment = getFragmentManager().findFragmentByTag("change_email");
             if (fragment == null) {
                 FragmentChangeEmail emailFragment = new FragmentChangeEmail();
+                emailFragment.setUser(user);
+                emailFragment.setFirebaseAuth(firebaseAuth);
                 ft.add(R.id.framelayout_main, emailFragment, "change_email");
                 ft.addToBackStack("change_email");
                 ft.hide(this);
@@ -103,18 +118,24 @@ public class FragmentMain extends BaseFragment{
         }
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ButterKnife.bind(this, view);
-        textviewUserEmail.setText("Test");
-        initFirebase();
-        return view;
+    private void openChangePassword() {
+        Log.d("Debug.FragmentMain", "on mail change");
+        if (getFragmentManager() != null) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment fragment = getFragmentManager().findFragmentByTag("change_pass");
+            if (fragment == null) {
+                FragmentChangePass passFragment = new FragmentChangePass();
+                passFragment.setUser(user);
+                passFragment.setFirebaseAuth(firebaseAuth);
+                ft.add(R.id.framelayout_main, passFragment, "change_pass");
+                ft.addToBackStack("change_pass");
+                ft.hide(this);
+                ft.commit();
+            } else {
+                ft.attach(fragment);
+            }
+        }
     }
-
 
 
 
@@ -126,12 +147,14 @@ public class FragmentMain extends BaseFragment{
                 openChangeEmail();
                 break;
             case R.id.change_password_button:
+                openChangePassword();
                 break;
             case R.id.sending_pass_reset_button:
                 break;
             case R.id.remove_user_button:
                 break;
             case R.id.sign_out:
+                firebaseAuth.signOut();
                 break;
         }
     }
