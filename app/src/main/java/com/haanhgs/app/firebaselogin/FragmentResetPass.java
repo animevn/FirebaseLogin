@@ -9,12 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -33,13 +30,7 @@ public class FragmentResetPass extends BaseFragment {
     @BindView(R.id.cardview_reset_password)
     CardView cardviewResetPassword;
 
-    private Context context;
-    private FirebaseUser user;
     private FirebaseAuth firebaseAuth;
-
-    public void setUser(FirebaseUser user) {
-        this.user = user;
-    }
 
     public void setFirebaseAuth(FirebaseAuth firebaseAuth) {
         this.firebaseAuth = firebaseAuth;
@@ -48,7 +39,6 @@ public class FragmentResetPass extends BaseFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
     }
 
     @Nullable

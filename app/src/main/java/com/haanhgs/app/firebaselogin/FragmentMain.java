@@ -10,11 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.firebase.auth.FederatedAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -46,13 +43,11 @@ public class FragmentMain extends BaseFragment{
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener fireAuthListener;
     private FirebaseUser user;
-    private Context context;
     private Activity activity;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
         activity = getActivity();
     }
 
@@ -144,7 +139,6 @@ public class FragmentMain extends BaseFragment{
             Fragment fragment = getFragmentManager().findFragmentByTag("reset_pass");
             if (fragment == null) {
                 FragmentResetPass passFragment = new FragmentResetPass();
-                passFragment.setUser(user);
                 passFragment.setFirebaseAuth(firebaseAuth);
                 ft.add(R.id.framelayout_main, passFragment, "reset_pass");
                 ft.addToBackStack("reset_pass");

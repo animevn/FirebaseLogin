@@ -23,25 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main1);
         openFragmentMain();
-//        ButterKnife.bind(this);
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        user = firebaseAuth.getCurrentUser();
-//        fireAuthListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                FirebaseUser user1 = firebaseAuth.getCurrentUser();
-//
-//                if (user1 == null) {
-//                    //user not login
-//                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//                    MainActivity.this.startActivity(intent);
-//                    MainActivity.this.finish();
-//                }
-//            }
-//        };
-
-
-
     }
 
 //    @Override

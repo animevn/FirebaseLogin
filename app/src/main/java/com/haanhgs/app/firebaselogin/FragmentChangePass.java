@@ -34,7 +34,6 @@ public class FragmentChangePass extends BaseFragment {
     @BindView(R.id.cardview_password)
     CardView cardviewPassword;
 
-    private Context context;
     private FirebaseUser user;
     private FirebaseAuth firebaseAuth;
 
@@ -49,7 +48,6 @@ public class FragmentChangePass extends BaseFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
     }
 
     @Nullable

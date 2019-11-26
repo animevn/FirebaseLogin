@@ -11,12 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -62,13 +60,8 @@ public class FragmentDeleteUser extends BaseFragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reset_password, container, false);
         ButterKnife.bind(this, view);
+        if (user.getEmail() != null) email.setText(user.getEmail());
         return view;
-    }
-
-    private void openSignup(){
-        Intent intent = new Intent(context, SignupActivity.class);
-        activity.startActivity(intent);
-        activity.finish();
     }
 
     private void deleteUser(){
@@ -80,7 +73,7 @@ public class FragmentDeleteUser extends BaseFragment {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Log.d("D.FragmentDeleteUser", "delete user ok");
-                                openSignup();
+                                firebaseAuth.signOut();
                                 progressBar.setVisibility(View.GONE);
                             } else {
                                 Log.d("D.FragmentDeleteUser", "delete user fail");

@@ -36,7 +36,6 @@ public class FragmentChangeEmail extends BaseFragment {
     Button changeEmail;
     @BindView(R.id.cardview_email)
     CardView cardviewEmail;
-    private Context context;
     private FirebaseUser user;
     private FirebaseAuth firebaseAuth;
 
@@ -51,7 +50,6 @@ public class FragmentChangeEmail extends BaseFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
     }
 
     @Nullable
