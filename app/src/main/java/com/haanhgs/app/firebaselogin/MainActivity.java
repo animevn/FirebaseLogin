@@ -21,43 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main1);
+        setContentView(R.layout.activity_main);
         openFragmentMain();
     }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        progressBar.setVisibility(View.GONE);
-//    }
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        firebaseAuth.addAuthStateListener(fireAuthListener);
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//
-//        if(fireAuthListener != null){
-//            firebaseAuth.removeAuthStateListener(fireAuthListener);
-//        }
-//    }
-
-
-
-//
-//    private void deleteUser(){
-//        //deleting some user
-//        removeUserButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-
-//            }
-//        });
-//    }
-//
-
 }
