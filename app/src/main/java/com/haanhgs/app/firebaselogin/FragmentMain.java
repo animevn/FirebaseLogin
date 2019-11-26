@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInApi;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import androidx.annotation.NonNull;
@@ -23,6 +28,7 @@ import butterknife.OnClick;
 
 public class FragmentMain extends BaseFragment{
 
+    public static final String LOGOUT = "logout";
     @BindView(R.id.textview_user_email)
     TextView textviewUserEmail;
     @BindView(R.id.cardview_user)
@@ -43,18 +49,24 @@ public class FragmentMain extends BaseFragment{
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener fireAuthListener;
     private FirebaseUser user;
+    private GoogleSignInAccount account;
     private Activity activity;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+
         activity = getActivity();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        firebaseAuth.addAuthStateListener(fireAuthListener);
+        if (fireAuthListener != null){
+            firebaseAuth.addAuthStateListener(fireAuthListener);
+        }
+
     }
 
     @Override
@@ -65,6 +77,10 @@ public class FragmentMain extends BaseFragment{
         }
     }
 
+    private void initGoogleAccount(){
+        account = GoogleSignIn.getLastSignedInAccount(activity);
+    }
+
     private void initFirebase() {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -72,14 +88,16 @@ public class FragmentMain extends BaseFragment{
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-                if (currentUser == null) {
+                if (currentUser == null && account == null) {
                     //user not login
                     Intent intent = new Intent(activity, LoginActivity.class);
+                    intent.putExtra(LOGOUT, LOGOUT);
                     activity.startActivity(intent);
                     activity.finish();
                 }
             }
         };
+
     }
 
     @Nullable
@@ -90,7 +108,9 @@ public class FragmentMain extends BaseFragment{
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
         initFirebase();
-        if (user.getEmail() != null) textviewUserEmail.setText(user.getEmail());
+        if (user != null && user.getEmail() != null) {
+            textviewUserEmail.setText(user.getEmail());
+        }
         return view;
     }
 

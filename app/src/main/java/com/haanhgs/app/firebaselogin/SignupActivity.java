@@ -46,11 +46,9 @@ public class SignupActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             Log.d("D.ResetActivity", "register failed");
                         } else {
-                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                            startActivity(intent);
                             finish();
-                            if (LoginActivity.loginActivity != null){
-                                LoginActivity.loginActivity.finish();
-                            }
                         }
                     }
                 });
@@ -107,6 +105,4 @@ public class SignupActivity extends AppCompatActivity {
         super.onResume();
         progressBar.setVisibility(View.GONE);
     }
-
-
 }
