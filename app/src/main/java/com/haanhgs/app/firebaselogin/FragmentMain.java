@@ -156,8 +156,24 @@ public class FragmentMain extends BaseFragment{
         }
     }
 
-
-
+    private void openDeleteUser() {
+        Log.d("Debug.FragmentMain", "on pass reset");
+        if (getFragmentManager() != null) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment fragment = getFragmentManager().findFragmentByTag("delete_user");
+            if (fragment == null) {
+                FragmentDeleteUser passFragment = new FragmentDeleteUser();
+                passFragment.setUser(user);
+                passFragment.setFirebaseAuth(firebaseAuth);
+                ft.add(R.id.framelayout_main, passFragment, "delete_user");
+                ft.addToBackStack("delete_user");
+                ft.hide(this);
+                ft.commit();
+            } else {
+                ft.attach(fragment);
+            }
+        }
+    }
 
     @OnClick({R.id.change_email_button, R.id.change_password_button,
             R.id.sending_pass_reset_button, R.id.remove_user_button, R.id.sign_out})
@@ -173,6 +189,7 @@ public class FragmentMain extends BaseFragment{
                 openResetPassword();
                 break;
             case R.id.remove_user_button:
+                openDeleteUser();
                 break;
             case R.id.sign_out:
                 firebaseAuth.signOut();

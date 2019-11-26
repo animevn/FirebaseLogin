@@ -67,58 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//    private void resetEmailButton(){
-//        //reset email button
-//        sendingPassResetButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                oldEmail.setVisibility(View.VISIBLE);
-//                newEmail.setVisibility(View.GONE);
-//                password.setVisibility(View.GONE);
-//                newPassword.setVisibility(View.GONE);
-//                changeEmail.setVisibility(View.GONE);
-//                changePass.setVisibility(View.GONE);
-//                send.setVisibility(View.VISIBLE);
-//                remove.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        send.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-
-//            }
-//        });
-//    }
 //
 //    private void deleteUser(){
 //        //deleting some user
 //        removeUserButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                progressBar.setVisibility(View.VISIBLE);
-//                if (user != null) {
-//                    user.delete()
-//                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if (task.isSuccessful()) {
-//                                        Toast.makeText(MainActivity.this,
-//                                                "Your profile is deleted:( Create a account now!",
-//                                                Toast.LENGTH_SHORT).show();
-//                                        Intent intent = new Intent(MainActivity.this, SignupActivity.class);
-//                                        MainActivity.this.startActivity(intent);
-//                                        MainActivity.this.finish();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    } else {
-//                                        Toast.makeText(MainActivity.this,
-//                                                "Failed to delete your account!",
-//                                                Toast.LENGTH_SHORT).show();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    }
-//                                }
-//                            });
-//                }
+
 //            }
 //        });
 //    }
