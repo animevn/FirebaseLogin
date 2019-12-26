@@ -85,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
         logUserToFirebase(emailString, passwordString);
     }
 
-
     private void initGoogleSignin(){
         GoogleSignInOptions signInOptions = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
