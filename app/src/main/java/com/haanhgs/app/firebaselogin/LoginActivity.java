@@ -28,19 +28,19 @@ import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
 
-    @BindView(R.id.email)
+    @BindView(R.id.etEmail)
     EditText email;
-    @BindView(R.id.password)
+    @BindView(R.id.etPassword)
     EditText password;
-    @BindView(R.id.login_button)
+    @BindView(R.id.bnLogin)
     Button loginButton;
-    @BindView(R.id.reset_button)
+    @BindView(R.id.bnReset)
     Button resetButton;
-    @BindView(R.id.btn_signup)
+    @BindView(R.id.bnSignup)
     Button btnSignup;
-    @BindView(R.id.progressbar)
+    @BindView(R.id.pbrLogin)
     ProgressBar progressBar;
-    @BindView(R.id.login_google_button)
+    @BindView(R.id.bnLoginGoogle)
     Button loginGoogleButton;
 
     private FirebaseAuth firebaseAuth;
@@ -101,19 +101,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.login_button, R.id.reset_button, R.id.btn_signup, R.id.login_google_button})
+    @OnClick({R.id.bnLogin, R.id.bnReset, R.id.bnSignup, R.id.bnLoginGoogle})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.login_button:
+            case R.id.bnLogin:
                 login();
                 break;
-            case R.id.reset_button:
+            case R.id.bnReset:
                 startActivity(new Intent(LoginActivity.this, ResetActivity.class));
                 break;
-            case R.id.btn_signup:
+            case R.id.bnSignup:
                 startActivity(new Intent(this, SignupActivity.class));
                 break;
-            case R.id.login_google_button:
+            case R.id.bnLoginGoogle:
                 signInWithGoogle();
                 break;
         }

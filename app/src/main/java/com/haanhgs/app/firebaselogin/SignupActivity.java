@@ -21,17 +21,17 @@ import butterknife.OnClick;
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
 
-    @BindView(R.id.email)
+    @BindView(R.id.etEmail)
     EditText email;
-    @BindView(R.id.password)
+    @BindView(R.id.etPassword)
     EditText password;
-    @BindView(R.id.sign_up_button)
+    @BindView(R.id.bnSignUp)
     Button signUpButton;
-    @BindView(R.id.sign_in_button)
+    @BindView(R.id.bnLogin)
     Button signInButton;
-    @BindView(R.id.progress_bar)
+    @BindView(R.id.pbrSignUp)
     ProgressBar progressBar;
-    @BindView(R.id.reset_button)
+    @BindView(R.id.bnReset)
     Button resetButton;
 
     private FirebaseAuth firebaseAuth;
@@ -76,17 +76,17 @@ public class SignupActivity extends AppCompatActivity {
         registerWithFirebase(userEmail, userPassword);
     }
 
-    @OnClick({R.id.sign_up_button, R.id.reset_button, R.id.sign_in_button})
+    @OnClick({R.id.bnSignUp, R.id.bnReset, R.id.bnLogin})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.sign_up_button:
+            case R.id.bnSignUp:
                 registerUser();
                 break;
-            case R.id.reset_button:
+            case R.id.bnReset:
                 startActivity(new Intent(SignupActivity.this, ResetActivity.class));
                 finish();
                 break;
-            case R.id.sign_in_button:
+            case R.id.bnLogin:
                 finish();
                 break;
         }

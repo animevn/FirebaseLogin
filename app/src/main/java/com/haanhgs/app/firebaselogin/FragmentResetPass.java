@@ -21,9 +21,9 @@ import butterknife.OnClick;
 
 public class FragmentResetPass extends BaseFragment {
 
-    @BindView(R.id.email)
+    @BindView(R.id.etEmail)
     EditText email;
-    @BindView(R.id.progressbar)
+    @BindView(R.id.pbrLogin)
     ProgressBar progressBar;
     @BindView(R.id.send)
     Button send;

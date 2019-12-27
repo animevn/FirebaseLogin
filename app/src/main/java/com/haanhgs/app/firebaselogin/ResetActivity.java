@@ -18,13 +18,13 @@ import butterknife.OnClick;
 
 public class ResetActivity extends AppCompatActivity {
 
-    @BindView(R.id.email)
+    @BindView(R.id.etEmail)
     EditText email;
-    @BindView(R.id.btn_reset_password)
+    @BindView(R.id.bnReset)
     Button btnResetPassword;
-    @BindView(R.id.btn_back)
+    @BindView(R.id.bnBack)
     Button btnBack;
-    @BindView(R.id.progressbar)
+    @BindView(R.id.pbrLogin)
     ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;
@@ -56,13 +56,13 @@ public class ResetActivity extends AppCompatActivity {
         requestResetPass(userEmail);
     }
 
-    @OnClick({R.id.btn_reset_password, R.id.btn_back})
+    @OnClick({R.id.bnReset, R.id.bnBack})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btn_reset_password:
+            case R.id.bnReset:
                 resetPass();
                 break;
-            case R.id.btn_back:
+            case R.id.bnBack:
                 finish();
                 break;
         }

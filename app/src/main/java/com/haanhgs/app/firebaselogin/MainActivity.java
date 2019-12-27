@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentMain fragment = (FragmentMain)getSupportFragmentManager().findFragmentByTag("main");
         if (fragment == null){
             FragmentMain fragmentMain = new FragmentMain();
-            ft.replace(R.id.framelayout_main, fragmentMain, "main");
+            ft.replace(R.id.flMain, fragmentMain, "main");
             ft.commit();
         }else {
             ft.attach(fragment);

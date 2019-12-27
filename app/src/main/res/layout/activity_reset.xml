@@ -10,7 +10,7 @@
      >
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cvImage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -43,7 +43,7 @@
         android:textColor="#3F51B5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/cvImage" />
 
     <TextView
         android:id="@+id/textView2"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/cvEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -78,7 +78,7 @@
             android:layout_margin="5dp">
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -94,7 +94,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btn_reset_password"
+        android:id="@+id/bnReset"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -107,10 +107,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintTop_toBottomOf="@+id/cvEmail" />
 
     <Button
-        android:id="@+id/btn_back"
+        android:id="@+id/bnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -123,10 +123,10 @@
         android:background="@drawable/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_reset_password" />
+        app:layout_constraintTop_toBottomOf="@+id/bnReset" />
 
     <ProgressBar
-        android:id="@+id/progressbar"
+        android:id="@+id/pbrLogin"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:visibility="gone"

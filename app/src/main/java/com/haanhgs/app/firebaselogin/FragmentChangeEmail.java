@@ -26,11 +26,11 @@ public class FragmentChangeEmail extends BaseFragment {
 
     @BindView(R.id.old_email)
     EditText oldEmail;
-    @BindView(R.id.password)
+    @BindView(R.id.etPassword)
     EditText password;
     @BindView(R.id.new_email)
     EditText newEmail;
-    @BindView(R.id.progressbar)
+    @BindView(R.id.pbrLogin)
     ProgressBar progressBar;
     @BindView(R.id.changeEmail)
     Button changeEmail;

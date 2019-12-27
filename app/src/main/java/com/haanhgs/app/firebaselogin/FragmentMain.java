@@ -120,7 +120,7 @@ public class FragmentMain extends BaseFragment{
                 FragmentChangeEmail emailFragment = new FragmentChangeEmail();
                 emailFragment.setUser(user);
                 emailFragment.setFirebaseAuth(firebaseAuth);
-                ft.add(R.id.framelayout_main, emailFragment, "change_email");
+                ft.add(R.id.flMain, emailFragment, "change_email");
                 ft.addToBackStack("change_email");
                 ft.hide(this);
                 ft.commit();
@@ -139,7 +139,7 @@ public class FragmentMain extends BaseFragment{
                 FragmentChangePass passFragment = new FragmentChangePass();
                 passFragment.setUser(user);
                 passFragment.setFirebaseAuth(firebaseAuth);
-                ft.add(R.id.framelayout_main, passFragment, "change_pass");
+                ft.add(R.id.flMain, passFragment, "change_pass");
                 ft.addToBackStack("change_pass");
                 ft.hide(this);
                 ft.commit();
@@ -157,7 +157,7 @@ public class FragmentMain extends BaseFragment{
             if (fragment == null) {
                 FragmentResetPass passFragment = new FragmentResetPass();
                 passFragment.setFirebaseAuth(firebaseAuth);
-                ft.add(R.id.framelayout_main, passFragment, "reset_pass");
+                ft.add(R.id.flMain, passFragment, "reset_pass");
                 ft.addToBackStack("reset_pass");
                 ft.hide(this);
                 ft.commit();
@@ -176,7 +176,7 @@ public class FragmentMain extends BaseFragment{
                 FragmentDeleteUser passFragment = new FragmentDeleteUser();
                 passFragment.setUser(user);
                 passFragment.setFirebaseAuth(firebaseAuth);
-                ft.add(R.id.framelayout_main, passFragment, "delete_user");
+                ft.add(R.id.flMain, passFragment, "delete_user");
                 ft.addToBackStack("delete_user");
                 ft.hide(this);
                 ft.commit();

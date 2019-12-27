@@ -23,11 +23,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class FragmentChangePass extends BaseFragment {
-    @BindView(R.id.password)
+    @BindView(R.id.etPassword)
     EditText password;
     @BindView(R.id.new_password)
     EditText newPassword;
-    @BindView(R.id.progressbar)
+    @BindView(R.id.pbrLogin)
     ProgressBar progressBar;
     @BindView(R.id.changePass)
     Button changePass;

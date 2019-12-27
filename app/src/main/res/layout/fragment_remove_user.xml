@@ -24,7 +24,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/email"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -42,14 +42,14 @@
                 tools:ignore="Autofill" />
 
             <ProgressBar
-                android:id="@+id/progressbar"
+                android:id="@+id/pbrLogin"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="32dp"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
+                app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
             <Button
                 android:id="@+id/remove"
@@ -65,7 +65,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/progressbar" />
+                app:layout_constraintTop_toBottomOf="@+id/pbrLogin" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

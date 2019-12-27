@@ -21,9 +21,9 @@ import butterknife.OnClick;
 
 public class FragmentDeleteUser extends BaseFragment {
 
-    @BindView(R.id.email)
+    @BindView(R.id.etEmail)
     TextView email;
-    @BindView(R.id.progressbar)
+    @BindView(R.id.pbrLogin)
     ProgressBar progressBar;
     @BindView(R.id.remove)
     Button remove;
