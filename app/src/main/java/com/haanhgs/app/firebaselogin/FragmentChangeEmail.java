@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -24,28 +23,20 @@ import butterknife.OnClick;
 
 public class FragmentChangeEmail extends BaseFragment {
 
-    @BindView(R.id.old_email)
+    @BindView(R.id.etEmail)
     EditText oldEmail;
     @BindView(R.id.etPassword)
     EditText password;
-    @BindView(R.id.new_email)
+    @BindView(R.id.etNewEmail)
     EditText newEmail;
     @BindView(R.id.pbrLogin)
     ProgressBar progressBar;
-    @BindView(R.id.changeEmail)
+    @BindView(R.id.bnChangeEmail)
     Button changeEmail;
     @BindView(R.id.cardview_email)
     CardView cardviewEmail;
     private FirebaseUser user;
     private FirebaseAuth firebaseAuth;
-
-    public void setUser(FirebaseUser user) {
-        this.user = user;
-    }
-
-    public void setFirebaseAuth(FirebaseAuth firebaseAuth) {
-        this.firebaseAuth = firebaseAuth;
-    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -59,7 +50,9 @@ public class FragmentChangeEmail extends BaseFragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_change_email, container, false);
         ButterKnife.bind(this, view);
-        oldEmail.setText(user.getEmail());
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        if (user != null) oldEmail.setText(user.getEmail());
         return view;
     }
 
@@ -77,20 +70,14 @@ public class FragmentChangeEmail extends BaseFragment {
     private void reEnableCredential(Task<Void> task, String string){
         if (task.isSuccessful()){
             Log.d("D.FragmentChangeEmail", "authenticate ok");
-            //noinspection Convert2Lambda,Anonymous2MethodRef
-            user.updateEmail(string).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    changeEmail(task);
-                }
-            });
+            user.updateEmail(string).addOnCompleteListener(this::changeEmail);
         }else {
             Log.d("D.FragmentChangeEmail", "authenticate failed");
             progressBar.setVisibility(View.GONE);
         }
     }
 
-    @OnClick(R.id.changeEmail)
+    @OnClick(R.id.bnChangeEmail)
     public void onViewClicked() {
         progressBar.setVisibility(View.VISIBLE);
 
@@ -99,13 +86,8 @@ public class FragmentChangeEmail extends BaseFragment {
         String password = this.password.getText().toString();
         if (user != null && user.getEmail() != null && !newEmail.equals("") && !password.equals("")) {
             AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), password);
-            //noinspection Convert2Lambda
-            user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    reEnableCredential(task, newEmail);
-                }
-            });
+            user.reauthenticate(credential).addOnCompleteListener(task ->
+                    reEnableCredential(task, newEmail));
         } else if (newEmail.equals("")) {
             this.newEmail.setError("Enter email");
             progressBar.setVisibility(View.GONE);

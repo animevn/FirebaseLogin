@@ -48,24 +48,20 @@ public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1979;
 
     private void logUserToFirebase(String mail, String pass) {
-        //noinspection Convert2Lambda
         firebaseAuth.signInWithEmailAndPassword(mail, pass)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
-                if (!task.isSuccessful()) {
-                    if (pass.length() < 6) {
-                        password.setError(getString(R.string.minimum_password));
+                .addOnCompleteListener(task -> {
+                    progressBar.setVisibility(View.GONE);
+                    if (!task.isSuccessful()) {
+                        if (pass.length() < 6) {
+                            password.setError(getString(R.string.minimum_password));
+                        } else {
+                            Log.d("D.LoginActivity", "log in failed");
+                        }
                     } else {
-                        Log.d("D.LoginActivity", "log in failed");
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                     }
-                } else {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    finish();
-                }
-            }
-        });
+                });
     }
 
     private void login() {
@@ -160,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
                 } else {
-
+                    Log.d("D.LoginActivity", "signInWithCredential:failed");
                 }
             }
         });

@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import androidx.annotation.NonNull;
@@ -26,19 +24,19 @@ import butterknife.OnClick;
 public class FragmentMain extends BaseFragment{
 
     public static final String LOGOUT = "logout";
-    @BindView(R.id.textview_user_email)
+    @BindView(R.id.tvEmail)
     TextView textviewUserEmail;
     @BindView(R.id.cardview_user)
     CardView cardviewUser;
-    @BindView(R.id.change_email_button)
+    @BindView(R.id.bnChangeEmail)
     Button changeEmailButton;
-    @BindView(R.id.change_password_button)
+    @BindView(R.id.bnChangePassword)
     Button changePasswordButton;
-    @BindView(R.id.sending_pass_reset_button)
+    @BindView(R.id.bnResetPassword)
     Button sendingPassResetButton;
-    @BindView(R.id.remove_user_button)
+    @BindView(R.id.bnDeleteUser)
     Button removeUserButton;
-    @BindView(R.id.sign_out)
+    @BindView(R.id.bnSignOut)
     Button signOut;
     @BindView(R.id.cardview_main)
     CardView cardviewMain;
@@ -46,9 +44,7 @@ public class FragmentMain extends BaseFragment{
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener fireAuthListener;
     private FirebaseUser user;
-    private GoogleSignInAccount account;
     private Activity activity;
-
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -62,7 +58,6 @@ public class FragmentMain extends BaseFragment{
         if (fireAuthListener != null){
             firebaseAuth.addAuthStateListener(fireAuthListener);
         }
-
     }
 
     @Override
@@ -73,28 +68,18 @@ public class FragmentMain extends BaseFragment{
         }
     }
 
-    private void initGoogleAccount(){
-        account = GoogleSignIn.getLastSignedInAccount(activity);
-    }
-
     private void initFirebase() {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        //noinspection Convert2Lambda
-        fireAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-                if (currentUser == null && account == null) {
-                    //user not login
-                    Intent intent = new Intent(activity, LoginActivity.class);
-                    intent.putExtra(LOGOUT, LOGOUT);
-                    activity.startActivity(intent);
-                    activity.finish();
-                }
+        fireAuthListener = firebaseAuth -> {
+            FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+            if (currentUser == null) {
+                Intent intent = new Intent(activity, LoginActivity.class);
+                intent.putExtra(LOGOUT, LOGOUT);
+                activity.startActivity(intent);
+                activity.finish();
             }
         };
-
     }
 
     @Nullable
@@ -118,8 +103,6 @@ public class FragmentMain extends BaseFragment{
             Fragment fragment = getFragmentManager().findFragmentByTag("change_email");
             if (fragment == null) {
                 FragmentChangeEmail emailFragment = new FragmentChangeEmail();
-                emailFragment.setUser(user);
-                emailFragment.setFirebaseAuth(firebaseAuth);
                 ft.add(R.id.flMain, emailFragment, "change_email");
                 ft.addToBackStack("change_email");
                 ft.hide(this);
@@ -137,8 +120,6 @@ public class FragmentMain extends BaseFragment{
             Fragment fragment = getFragmentManager().findFragmentByTag("change_pass");
             if (fragment == null) {
                 FragmentChangePass passFragment = new FragmentChangePass();
-                passFragment.setUser(user);
-                passFragment.setFirebaseAuth(firebaseAuth);
                 ft.add(R.id.flMain, passFragment, "change_pass");
                 ft.addToBackStack("change_pass");
                 ft.hide(this);
@@ -156,7 +137,6 @@ public class FragmentMain extends BaseFragment{
             Fragment fragment = getFragmentManager().findFragmentByTag("reset_pass");
             if (fragment == null) {
                 FragmentResetPass passFragment = new FragmentResetPass();
-                passFragment.setFirebaseAuth(firebaseAuth);
                 ft.add(R.id.flMain, passFragment, "reset_pass");
                 ft.addToBackStack("reset_pass");
                 ft.hide(this);
@@ -174,8 +154,6 @@ public class FragmentMain extends BaseFragment{
             Fragment fragment = getFragmentManager().findFragmentByTag("delete_user");
             if (fragment == null) {
                 FragmentDeleteUser passFragment = new FragmentDeleteUser();
-                passFragment.setUser(user);
-                passFragment.setFirebaseAuth(firebaseAuth);
                 ft.add(R.id.flMain, passFragment, "delete_user");
                 ft.addToBackStack("delete_user");
                 ft.hide(this);
@@ -186,23 +164,23 @@ public class FragmentMain extends BaseFragment{
         }
     }
 
-    @OnClick({R.id.change_email_button, R.id.change_password_button,
-            R.id.sending_pass_reset_button, R.id.remove_user_button, R.id.sign_out})
+    @OnClick({R.id.bnChangeEmail, R.id.bnChangePassword,
+            R.id.bnResetPassword, R.id.bnDeleteUser, R.id.bnSignOut})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.change_email_button:
+            case R.id.bnChangeEmail:
                 openChangeEmail();
                 break;
-            case R.id.change_password_button:
+            case R.id.bnChangePassword:
                 openChangePassword();
                 break;
-            case R.id.sending_pass_reset_button:
+            case R.id.bnResetPassword:
                 openResetPassword();
                 break;
-            case R.id.remove_user_button:
+            case R.id.bnDeleteUser:
                 openDeleteUser();
                 break;
-            case R.id.sign_out:
+            case R.id.bnSignOut:
                 firebaseAuth.signOut();
                 break;
         }

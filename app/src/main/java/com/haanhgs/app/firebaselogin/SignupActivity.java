@@ -8,11 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,19 +33,15 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
     private void registerWithFirebase(String userEmail, String userPassword){
-        //noinspection Convert2Lambda
         firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword)
-                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>(){
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("D.ResetActivity", "mail empty");
-                        if (!task.isSuccessful()) {
-                            Log.d("D.ResetActivity", "register failed");
-                        } else {
-                            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
+                .addOnCompleteListener(SignupActivity.this, task -> {
+                    Log.d("D.ResetActivity", "mail empty");
+                    if (!task.isSuccessful()) {
+                        Log.d("D.ResetActivity", "register failed");
+                    } else {
+                        Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 });
     }

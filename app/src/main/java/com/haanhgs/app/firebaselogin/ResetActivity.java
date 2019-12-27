@@ -7,10 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,19 +27,16 @@ public class ResetActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
     private void requestResetPass(String userEmail){
-        //noinspection Convert2Lambda
         firebaseAuth.sendPasswordResetEmail(userEmail)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Log.d("D.ResetActivity", "pass reset ok");
-                } else {
-                    Log.d("D.ResetActivity", "pass reset failed");
-                }
-                progressBar.setVisibility(View.GONE);
-            }
-        });
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("D.ResetActivity", "pass reset ok");
+                        firebaseAuth.signOut();
+                    } else {
+                        Log.d("D.ResetActivity", "pass reset failed");
+                    }
+                    progressBar.setVisibility(View.GONE);
+                });
     }
 
     private void resetPass(){

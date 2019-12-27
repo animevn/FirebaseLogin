@@ -23,7 +23,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/old_email"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -57,11 +57,11 @@
                 android:textColor="#3F51B5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/old_email"
+                app:layout_constraintTop_toBottomOf="@id/etEmail"
                 tools:ignore="Autofill" />
 
             <EditText
-                android:id="@+id/new_email"
+                android:id="@+id/etNewEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -86,10 +86,10 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/new_email" />
+                app:layout_constraintTop_toBottomOf="@id/etNewEmail" />
 
             <Button
-                android:id="@+id/changeEmail"
+                android:id="@+id/bnChangeEmail"
                 style="?android:textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
