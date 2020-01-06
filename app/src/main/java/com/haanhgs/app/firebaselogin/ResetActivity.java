@@ -50,7 +50,7 @@ public class ResetActivity extends AppCompatActivity {
     private void resetPassword(){
         String mail = etEmail.getText().toString().trim();
         if (TextUtils.isEmpty(mail)){
-            etEmail.setError(getString(R.string.send_password_reset_email));
+            etEmail.setError(getString(R.string.mail_empty));
         }
         sendRequestPasswordReset(mail);
     }

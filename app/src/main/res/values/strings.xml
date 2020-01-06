@@ -31,4 +31,5 @@
     <string name="forgot_password_msg">Type your registered email, we will send you password reset instructions.</string>
     <string name="pass_hint">Password</string>
     <string name="googleLogin">Login with Google</string>
+    <string name="mail_empty">Email cannot be empty</string>
 </resources>
