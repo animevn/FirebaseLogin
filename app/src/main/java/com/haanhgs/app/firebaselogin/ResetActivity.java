@@ -55,7 +55,7 @@ public class ResetActivity extends AppCompatActivity {
         sendRequestPasswordReset(mail);
     }
 
-    @OnClick({R.id.bnReset, R.id.bnBack, R.id.pbrLogin})
+    @OnClick({R.id.bnReset, R.id.bnBack})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bnReset:

@@ -71,6 +71,9 @@ public class FragmentMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
         initFirebase();
+        if (user != null && user.getEmail() != null) {
+            tvEmail.setText(user.getEmail());
+        }
         return view;
     }
 
