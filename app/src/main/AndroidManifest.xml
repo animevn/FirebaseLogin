@@ -25,13 +25,6 @@
         </activity>
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".ResetActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            />
-        <activity
-            android:name=".SignupActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            />
     </application>
 
 </manifest>
