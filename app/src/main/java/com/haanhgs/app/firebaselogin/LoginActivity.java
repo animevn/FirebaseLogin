@@ -66,6 +66,13 @@ public class LoginActivity extends AppCompatActivity {
         client = GoogleSignIn.getClient(this, options);
     }
 
+    private void getSignOutIntent(){
+        Intent intent = getIntent();
+        String string = intent.getStringExtra("logout");
+        if ("logout".equals(string)){
+            client.signOut();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         checkUserSignIn();
         initGoogleSignInClient();
+        getSignOutIntent();
     }
 
     //SignIn with google
