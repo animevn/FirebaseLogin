@@ -42,8 +42,6 @@ public class FragmentChangeEmail extends Fragment {
         user = firebaseAuth.getCurrentUser();
     }
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
