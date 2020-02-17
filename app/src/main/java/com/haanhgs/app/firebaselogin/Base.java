@@ -7,6 +7,9 @@ public class Base {
     public static final String LOGIN_TAG = "E.LoginActivity";
     public static final int RC_SIGN_IN = 2204;
 
+    //using in ResetActivity
+    public static final String RESET_TAG = "E.ResetActivity";
+
 
 
 }
