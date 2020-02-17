@@ -33,4 +33,6 @@
     <string name="googleLogin">Login with Google</string>
     <string name="mail_empty">Email cannot be empty</string>
     <string name="reset_ok">Password reset OK</string>
+    <string name="email_empty">Email can not be empty</string>
+    <string name="password_empty">Password can not be empty</string>
 </resources>
