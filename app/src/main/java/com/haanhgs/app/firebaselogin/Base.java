@@ -16,5 +16,10 @@ public class Base {
     //using in MainActivity
     public static final String FRAGMENT_MAIN = "fragment_main";
 
+    //using in FragmentMain
+    public static final String FRAGMENT_CHANGE_EMAIL = "fragment_change_email";
+    public static final String FRAGMENT_CHANGE_PASSWORD = "fragment_change_password";
+    public static final String FRAGMENT_RESET_PASSWORD = "fragment_reset_password";
+    public static final String FRAGMENT_DELETE_USER = "fragment_delete_user";
 
 }
