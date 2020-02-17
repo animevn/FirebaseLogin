@@ -22,4 +22,7 @@ public class Base {
     public static final String FRAGMENT_RESET_PASSWORD = "fragment_reset_password";
     public static final String FRAGMENT_DELETE_USER = "fragment_delete_user";
 
+    //using in FragmentReset
+    public static final String FRAGMENT_RESET = "E.FragmentReset";
+
 }
