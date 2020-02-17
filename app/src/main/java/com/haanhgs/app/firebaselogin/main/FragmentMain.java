@@ -60,7 +60,10 @@ public class FragmentMain extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         authStateListener = firebaseAuth -> {
-            if (user == null){
+            //must use current user at that time because the user parametter is always null when
+            //we open other fragment
+            FirebaseUser curentUser = firebaseAuth.getCurrentUser();
+            if (curentUser == null){
                 Intent intent = new Intent(activity, LoginActivity.class);
                 intent.putExtra(Base.LOGOUT, Base.LOGOUT);
                 startActivity(intent);
@@ -76,11 +79,12 @@ public class FragmentMain extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
+        initFirebase();
         if (user != null){
             tvEmail.setText(user.getEmail());
         }
 
-        //if signin with google then can only delete user, can not change email, password
+        //if signin with google then can only delete user, can not change email or password
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(activity);
         if (account != null){
             bnChangeEmail.setEnabled(false);
