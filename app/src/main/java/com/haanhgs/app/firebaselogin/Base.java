@@ -10,6 +10,8 @@ public class Base {
     //using in ResetActivity
     public static final String RESET_TAG = "E.ResetActivity";
 
+    //using in SignUpActivity
+    public static final String SIGNUP_TAG = "E.SignUpActivity";
 
 
 }
