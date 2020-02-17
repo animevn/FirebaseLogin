@@ -13,5 +13,8 @@ public class Base {
     //using in SignUpActivity
     public static final String SIGNUP_TAG = "E.SignUpActivity";
 
+    //using in MainActivity
+    public static final String FRAGMENT_MAIN = "fragment_main";
+
 
 }
