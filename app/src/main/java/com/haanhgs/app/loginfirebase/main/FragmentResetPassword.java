@@ -1,4 +1,4 @@
-package com.haanhgs.app.firebaselogin.main;
+package com.haanhgs.app.loginfirebase.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,9 +13,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.haanhgs.app.firebaselogin.Base;
-import com.haanhgs.app.firebaselogin.R;
-import com.haanhgs.app.firebaselogin.ResetActivity;
+import com.haanhgs.app.loginfirebase.Base;
+import com.haanhgs.app.loginfirebase.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

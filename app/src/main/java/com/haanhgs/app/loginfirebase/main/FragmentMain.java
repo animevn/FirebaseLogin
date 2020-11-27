@@ -1,4 +1,4 @@
-package com.haanhgs.app.firebaselogin.main;
+package com.haanhgs.app.loginfirebase.main;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,9 +13,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.haanhgs.app.firebaselogin.Base;
-import com.haanhgs.app.firebaselogin.LoginActivity;
-import com.haanhgs.app.firebaselogin.R;
+import com.haanhgs.app.loginfirebase.Base;
+import com.haanhgs.app.loginfirebase.LoginActivity;
+import com.haanhgs.app.loginfirebase.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;

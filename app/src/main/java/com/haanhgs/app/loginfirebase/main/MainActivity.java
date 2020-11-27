@@ -1,8 +1,8 @@
-package com.haanhgs.app.firebaselogin.main;
+package com.haanhgs.app.loginfirebase.main;
 
 import android.os.Bundle;
-import com.haanhgs.app.firebaselogin.Base;
-import com.haanhgs.app.firebaselogin.R;
+import com.haanhgs.app.loginfirebase.Base;
+import com.haanhgs.app.loginfirebase.R;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;

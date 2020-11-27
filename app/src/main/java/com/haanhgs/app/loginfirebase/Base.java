@@ -1,4 +1,4 @@
-package com.haanhgs.app.firebaselogin;
+package com.haanhgs.app.loginfirebase;
 
 public class Base {
 

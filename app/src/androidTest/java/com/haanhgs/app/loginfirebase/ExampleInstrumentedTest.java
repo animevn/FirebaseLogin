@@ -1,4 +1,4 @@
-package com.haanhgs.app.firebaselogin;
+package com.haanhgs.app.loginfirebase;
 
 import android.content.Context;
 

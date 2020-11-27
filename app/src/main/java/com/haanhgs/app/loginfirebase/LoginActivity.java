@@ -1,4 +1,4 @@
-package com.haanhgs.app.firebaselogin;
+package com.haanhgs.app.loginfirebase;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.haanhgs.app.firebaselogin.main.MainActivity;
+import com.haanhgs.app.loginfirebase.main.MainActivity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;

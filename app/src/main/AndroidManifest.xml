@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.haanhgs.app.firebaselogin">
+    package="com.haanhgs.app.loginfirebase">
 
     <dist:module dist:instant="true" />
 
@@ -15,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".LoginActivity"
+        <activity android:name="com.haanhgs.app.loginfirebase.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,14 +23,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.MainActivity" />
-        <activity android:name=".ResetActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name="com.haanhgs.app.loginfirebase.main.MainActivity" />
+        <activity android:name="com.haanhgs.app.loginfirebase.ResetActivity" />
+        <activity android:name="com.haanhgs.app.loginfirebase.SignUpActivity" />
 
-        <activity
-            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-            tools:replace="android:launchMode"
-            android:launchMode="standard" />
+<!--        <activity-->
+<!--            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"-->
+<!--            tools:replace="android:launchMode"-->
+<!--            android:launchMode="standard" />-->
 
     </application>
 
